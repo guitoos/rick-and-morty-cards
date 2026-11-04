@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portal interdimensional de personagens de Rick and Morty. Aplicacao front-end em HTML, CSS e JavaScript puro que consome a Rick and Morty API em tempo real." />
+  <meta name="author" content="Guilherme Oliveira Silva Santos" />
+  <title>Portal C-137 | Personagens de Rick and Morty</title>
+
+  <!-- Favicon em SVG embutido (portal verde), sem arquivos externos -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2397ce4c'/%3E%3Ccircle cx='50' cy='50' r='26' fill='%2344d8a0'/%3E%3Ccircle cx='50' cy='50' r='11' fill='%230b0c14'/%3E%3C/svg%3E" />
+
+  <!-- Fontes: tipografia coerente com o tema (display arredondada + texto legivel) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- ==================== CABEÇALHO ==================== -->
+  <header class="cabecalho" id="topo">
+    <div class="container cabecalho__interno">
+      <a class="marca" href="#topo" aria-label="Portal C-137 - início">
+        <svg class="marca__portal" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" class="portal-ext" />
+          <circle cx="50" cy="50" r="30" class="portal-med" />
+          <circle cx="50" cy="50" r="14" class="portal-int" />
+        </svg>
+        <span class="marca__texto">Portal <strong>C-137</strong></span>
+      </a>
+
+      <nav class="menu" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#personagens">Personagens</a>
+        <a href="#api">A API</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+      <div class="hero__brilho" aria-hidden="true"></div>
+      <div class="container hero__interno">
+        <p class="hero__tag">Desenhos de sucesso dos anos 90 e 2000</p>
+        <h1 class="hero__titulo">
+          Explore o multiverso de <span class="destaque">Rick and Morty</span>
+        </h1>
+        <p class="hero__texto">
+          Um catálogo interdimensional construído com <strong>HTML, CSS e JavaScript puro</strong>.
+          Todos os cards desta página são criados dinamicamente pelo JavaScript a partir dos dados
+          consumidos em tempo real da <em>Rick and Morty API</em>.
+        </p>
+
+        <!-- Números carregados em tempo real da API -->
+        <div class="estatisticas" id="estatisticas">
+          <div class="estatistica">
+            <span class="estatistica__valor" id="total-personagens">--</span>
+            <span class="estatistica__rotulo">Personagens</span>
+          </div>
+          <div class="estatistica">
+            <span class="estatistica__valor" id="total-locais">--</span>
+            <span class="estatistica__rotulo">Locais</span>
+          </div>
+          <div class="estatistica">
+            <span class="estatistica__valor" id="total-episodios">--</span>
+            <span class="estatistica__rotulo">Episódios</span>
+          </div>
+          <div class="estatistica">
+            <span class="estatistica__valor" id="total-favoritos">0</span>
+            <span class="estatistica__rotulo">Favoritos</span>
+          </div>
+        </div>
+
+        <a href="#personagens" class="botao botao--primario hero__cta">Ver os personagens</a>
+      </div>
+    </section>
+
+    <!-- ==================== SOBRE ==================== -->
+    <section class="secao" id="sobre">
+      <div class="container">
+        <h2 class="secao__titulo">Sobre o desenho</h2>
+        <p class="secao__subtitulo">
+          Animação adulta criada por Justin Roiland e Dan Harmon e exibida pelo Adult Swim desde 2013.
+          Herdeira direta da cultura de animação dos anos 90 e 2000, a série acompanha o cientista
+          Rick Sanchez e seu neto Morty Smith em viagens por dimensões paralelas.
+        </p>
+
+        <div class="cards-info">
+          <article class="card-info">
+            <div class="card-info__icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12Zm0 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/></svg>
+            </div>
+            <h3>Multiverso infinito</h3>
+            <p>Cada dimensão tem a sua própria versão dos personagens, o que explica tantos Ricks e Mortys diferentes dentro do catálogo da API.</p>
+          </article>
+
+          <article class="card-info">
+            <div class="card-info__icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+            </div>
+            <h3>Elenco completo</h3>
+            <p>A API cataloga cada personagem com imagem, status de vida, espécie, gênero, origem, localização atual e episódios em que apareceu.</p>
+          </article>
+
+          <article class="card-info">
+            <div class="card-info__icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16v2H4V4Zm0 5h16v2H4V9Zm0 5h10v2H4v-2Zm0 5h10v2H4v-2Zm13.5-5L22 21l-4.5-3L13 21l4.5-7Z"/></svg>
+            </div>
+            <h3>Dados em tempo real</h3>
+            <p>Nada está fixo no HTML: a cada carregamento da página o JavaScript faz uma requisição <code>fetch</code> e monta a interface do zero.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PERSONAGENS (ÁREA DOS CARDS DINÂMICOS) ============ -->
+    <section class="secao secao--escura" id="personagens">
+      <div class="container">
+        <h2 class="secao__titulo">Personagens</h2>
+        <p class="secao__subtitulo">
+          Use a busca e os filtros abaixo: cada alteração dispara uma nova requisição à API.
+        </p>
+
+        <!-- Filtros: viram parâmetros de query na URL da API -->
+        <form class="filtros" id="filtros" autocomplete="off">
+          <div class="campo campo--busca">
+            <svg class="campo__icone" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 1 0 4.9 14.3l5.4 5.4 1.4-1.4-5.4-5.4A8 8 0 0 0 10 2Zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12Z"/></svg>
+            <label class="sr-only" for="busca">Buscar personagem pelo nome</label>
+            <input type="search" id="busca" name="busca" placeholder="Buscar por nome (ex.: Rick, Summer, Birdperson)" />
+          </div>
+
+          <div class="campo">
+            <label class="sr-only" for="filtro-status">Filtrar por status</label>
+            <select id="filtro-status" name="status">
+              <option value="">Status: todos</option>
+              <option value="alive">Vivo</option>
+              <option value="dead">Morto</option>
+              <option value="unknown">Desconhecido</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label class="sr-only" for="filtro-especie">Filtrar por espécie</label>
+            <select id="filtro-especie" name="species">
+              <option value="">Espécie: todas</option>
+              <option value="Human">Humano</option>
+              <option value="Alien">Alienígena</option>
+              <option value="Humanoid">Humanoide</option>
+              <option value="Robot">Robô</option>
+              <option value="Animal">Animal</option>
+              <option value="Mythological Creature">Criatura mitológica</option>
+              <option value="Poopybutthole">Poopybutthole</option>
+              <option value="Cronenberg">Cronenberg</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label class="sr-only" for="filtro-genero">Filtrar por gênero</label>
+            <select id="filtro-genero" name="gender">
+              <option value="">Gênero: todos</option>
+              <option value="female">Feminino</option>
+              <option value="male">Masculino</option>
+              <option value="genderless">Sem gênero</option>
+              <option value="unknown">Desconhecido</option>
+            </select>
+          </div>
+
+          <button type="button" class="botao botao--fantasma" id="btn-favoritos" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9A5.4 5.4 0 0 1 12 6.3 5.4 5.4 0 0 1 21.6 12c-2.1 4.4-9.6 9-9.6 9Z"/></svg>
+            Favoritos
+          </button>
+
+          <button type="button" class="botao botao--fantasma" id="btn-limpar">Limpar</button>
+        </form>
+
+        <!-- Resumo do resultado atual -->
+        <p class="resultado-info" id="resultado-info" role="status" aria-live="polite"></p>
+
+        <!-- O JavaScript injeta os cards aqui. O HTML nao possui nenhum card estatico. -->
+        <div class="grade-cards" id="grade-cards"></div>
+
+        <!-- Estados auxiliares -->
+        <div class="estado" id="estado-carregando" hidden>
+          <div class="spinner" aria-hidden="true"></div>
+          <p>Abrindo o portal e carregando personagens...</p>
+        </div>
+
+        <div class="estado estado--erro" id="estado-erro" hidden>
+          <p id="mensagem-erro">Não foi possível falar com o servidor da dimensão C-137.</p>
+          <button type="button" class="botao botao--primario" id="btn-tentar-novamente">Tentar novamente</button>
+        </div>
+
+        <div class="paginacao">
+          <button type="button" class="botao botao--primario" id="btn-carregar-mais" hidden>
+            Carregar mais personagens
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SOBRE A API ==================== -->
+    <section class="secao" id="api">
+      <div class="container">
+        <h2 class="secao__titulo">A API utilizada</h2>
+        <p class="secao__subtitulo">
+          A <a href="https://rickandmortyapi.com/" target="_blank" rel="noopener">Rick and Morty API</a>
+          é pública, gratuita, somente leitura e não exige cadastro nem token de acesso.
+        </p>
+
+        <div class="tabela-wrapper">
+          <table class="tabela-api">
+            <caption class="sr-only">Regras de acesso e endpoints da Rick and Morty API</caption>
+            <thead>
+              <tr><th scope="col">Item</th><th scope="col">Descrição</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>URL base</td><td><code>https://rickandmortyapi.com/api</code></td></tr>
+              <tr><td>Autenticação</td><td>Não é necessária: sem token, sem chave e sem cadastro</td></tr>
+              <tr><td>Método</td><td><code>GET</code> (API somente leitura)</td></tr>
+              <tr><td>Endpoint usado</td><td><code>/character?page=1&amp;name=&amp;status=&amp;species=&amp;gender=</code></td></tr>
+              <tr><td>Formato</td><td>JSON com as chaves <code>info</code> (paginação) e <code>results</code> (lista)</td></tr>
+              <tr><td>Paginação</td><td>20 personagens por página, 42 páginas no total</td></tr>
+              <tr><td>Limite de requisições</td><td>Sem limite rígido documentado; uso responsável e com cache local</td></tr>
+              <tr><td>Erro comum</td><td><code>404</code> quando nenhum personagem atende aos filtros</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== MODAL DE DETALHES ==================== -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal__fundo" data-fechar-modal></div>
+    <div class="modal__caixa" role="dialog" aria-modal="true" aria-labelledby="modal-nome">
+      <button class="modal__fechar" type="button" data-fechar-modal aria-label="Fechar detalhes">&times;</button>
+      <div class="modal__conteudo" id="modal-conteudo">
+        <!-- preenchido dinamicamente pelo JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RODAPÉ ==================== -->
+  <footer class="rodape">
+    <div class="container rodape__interno">
+      <div>
+        <p class="rodape__titulo">Portal C-137</p>
+        <p>Trabalho da disciplina Web Programming For Front-End — UniFECAF.</p>
+      </div>
+      <div class="rodape__aluno">
+        <p><strong>Guilherme Oliveira Silva Santos</strong></p>
+        <p>RA: 143422</p>
+      </div>
+      <div>
+        <p>Dados: <a href="https://rickandmortyapi.com/" target="_blank" rel="noopener">rickandmortyapi.com</a></p>
+        <p class="rodape__nota">Rick and Morty é propriedade de Adult Swim / Warner Bros. Projeto acadêmico, sem fins lucrativos.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

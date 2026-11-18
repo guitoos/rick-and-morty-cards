@@ -6,7 +6,6 @@ os personagens em **cards criados dinamicamente pelo JavaScript**.
 Trabalho da disciplina **Web Programming For Front-End** — UniFECAF.
 
 - **Aluno:** Guilherme Oliveira Silva Santos
-- **RA:** 143422
 
 🔗 **Site no ar:** https://guitoos.github.io/rick-and-morty-cards/
 
